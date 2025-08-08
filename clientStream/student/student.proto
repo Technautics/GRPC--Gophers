@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package student;
+
+option go_package = "./student";
+
+service StudentService {
+    // Client sends a stream of assignments and gets a final grade.
+    rpc SubmitAssignments( stream Assignment) returns (FinalGrade);
+}
+
+
+message Assignment {
+    string title = 1;
+    int32 marks = 2;
+}
+
+message FinalGrade {
+    float Average = 1;
+    string Remarks = 2;
+}
+

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package news;
+
+option go_package = "./news";
+
+service NewsService {
+    rpc GetNewsStream (NewsRequest) returns (stream NewsResponse);
+}
+
+message NewsRequest {
+    string category = 1; // Category for which news is requested.
+}
+
+message NewsResponse {
+    string headline = 1;  // Each response has a headline
+}
+
